@@ -1,3 +1,4 @@
+//Function that figures out what the computer's playing
 function computerPlay() {
     let computerSelection = Math.floor(Math.random()*3);
 
@@ -15,6 +16,7 @@ function computerPlay() {
     return computerSelection;
 }
 
+//Function that figures out what the player is playing.
 function playerPlay() {
     let playerSelection = prompt("Rock, Paper or Scissors?", "Rock");
     playerSelection = playerSelection.toLowerCase();
@@ -30,6 +32,7 @@ function playerPlay() {
     return playerSelection;
 }
 
+//Function that plays one game
 function playGame(playerSelection, computerSelection) {
     const tie = "You tied!";
     const computerWin = `The computer wins! ${computerSelection} beats ${playerSelection} `;
@@ -50,6 +53,7 @@ function playGame(playerSelection, computerSelection) {
     }
 }
 
+//Function that simulates 5 rounds of games
 function game() {
     console.log("This is the beginning of a 5 round game against the computer. \n Get ready!");
     let playerScore = 0;
