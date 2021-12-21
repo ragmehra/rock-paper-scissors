@@ -53,46 +53,4 @@ function playGame(playerSelection, computerSelection) {
     }
 }
 
-//Function that simulates 5 rounds of games
-function game() {
-    console.log("This is the beginning of a 5 round game against the computer. \n Get ready!");
-    let playerScore = 0;
-    let computerScore = 0;
 
-    
-
-    for (let i = 0; i < 5; i ++) {
-
-        console.log("Round " + (i + 1) + "!");
-        let playerSelection = playerPlay();
-        let computerSelection = computerPlay();
-
-        const tie = "You tied!";
-        const computerWin = `The computer wins! ${computerSelection} beats ${playerSelection} `;
-        const playerWin = `You win! ${playerSelection} beats ${computerSelection} `;
-
-        let result = playGame(playerSelection, computerSelection);
-
-        if (result === computerWin) {
-            computerScore += 1;
-        }
-        else if (result === playerWin) {
-            playerScore += 1;
-        }
-
-        console.log(result);
-        console.log("Current Score: ");
-        console.log("Computer: " + computerScore);
-        console.log("Player: " + playerScore);
-    }
-
-    if (computerScore > playerScore) {
-        return "The Computer Won!";
-    }
-    else if (playerScore > computerScore) {
-        return "You won!";
-    }
-    else return "After 5 rounds, you guys were still tied! Amazing!";
-}
-
-console.log(game());
