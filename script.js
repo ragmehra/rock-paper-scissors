@@ -39,25 +39,39 @@ function playGame(e) {
 
     let playerSelection = playerPlay(e);
     let computerSelection = computerPlay();
+    let result;
     const tie = "You tied!";
     const computerWin = `The computer wins! ${computerSelection} beats ${playerSelection} `;
     const playerWin = `You win! ${playerSelection} beats ${computerSelection} `;
 
     //Check for all ties.
     if ((playerSelection === "rock" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "scissors")) {
-        console.log(tie);
+        result = `Player Selection: ${playerSelection} \n Computer Selection: 
+            ${computerSelection} \n ${tie}`; 
+        updateResult(result);
         return tie;
     }
     //Check for all computer wins
     else if ((computerSelection === "rock" && playerSelection === "scissors") || (computerSelection === "paper" && playerSelection === "rock") || (computerSelection === "scissors" && playerSelection === "paper")) {
-        console.log(computerWin);
+        result = `Player Selection: ${playerSelection} \n Computer Selection: 
+            ${computerSelection} \n ${computerWin}`; 
+        updateResult(result);
         return computerWin;
     }
     //Check for all player wins
     else {
-        console.log(playerWin);
+        result = `Player Selection: ${playerSelection} \n Computer Selection: 
+            ${computerSelection} \n ${playerWin}`; 
+        updateResult(result);
         return playerWin;
     }
+}
+
+function updateResult(text) {
+    let result = document.querySelector("#result");
+
+    result.textContent = "";
+    result.textContent = text;
 }
 
 function clickPlay(button) {
