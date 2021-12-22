@@ -49,20 +49,25 @@ function playGame(e) {
             (playerSelection === "paper" && computerSelection === "paper") || 
             (playerSelection === "scissors" && computerSelection === "scissors")) {
         updateResult(tie, computerSelection, playerSelection);
-        return tie;
+        //return tie;
     }
     //Check for all computer wins
     else if ((computerSelection === "rock" && playerSelection === "scissors") || 
             (computerSelection === "paper" && playerSelection === "rock") || 
             (computerSelection === "scissors" && playerSelection === "paper")) {
         updateResult(computerWin, computerSelection, playerSelection);
-        return computerWin;
+        updateScore("computerWin")
+        //return computerWin;
     }
     //Check for all player wins
     else {
         updateResult(playerWin, computerSelection, playerSelection);
-        return playerWin;
+        updateScore("playerWin");
+        //return playerWin;
     }
+
+    checkForWinner();
+
 }
 
 function updateResult(result, computerSelection, playerSelection) {
@@ -73,6 +78,54 @@ function updateResult(result, computerSelection, playerSelection) {
     computerSelectionDiv.textContent = "Computer Selection: " + computerSelection;
     playerSelectionDiv.textContent = "Your Selection: " + playerSelection;
     resultDiv.textContent = result;
+}
+
+function updateScore(result) {
+    const computerScoreDiv = document.querySelector("#computerScore");
+    const playerScoreDiv = document.querySelector("#playerScore");
+    const roundDiv = document.querySelector("#round");
+    let score = retrieveScore();
+
+    if (result === "playerWin") {
+        playerScoreDiv.textContent = score[1] + 1;
+    }
+    else if (result === "computerWin") {
+        computerScoreDiv.textContent = score[0] + 1;
+    }
+
+}
+
+function retrieveScore() {
+    const computerScoreDiv = document.querySelector("#computerScore");
+    const playerScoreDiv = document.querySelector("#playerScore");
+    let computerScore = Number(computerScoreDiv.textContent);
+    let playerScore = Number(playerScoreDiv.textContent);
+    let score = [computerScore, playerScore];
+    return score;
+}
+
+function resetScore() {
+    const computerScoreDiv = document.querySelector("#computerScore");
+    const playerScoreDiv = document.querySelector("#playerScore");
+    computerScoreDiv.textContent = "0";
+    playerScoreDiv.textContent = "0";
+}
+
+function checkForWinner() {
+    const computerScoreDiv = document.querySelector("#computerScore");
+    const playerScoreDiv = document.querySelector("#playerScore");
+
+    if (computerScoreDiv.textContent === "5") {
+        alert("Computer Wins!");
+        resetScore();
+    } 
+    else if (playerScoreDiv.textContent === "5") {
+        alert("You Win!");
+        resetScore();
+    }
+
+
+
 }
 
 function clickPlay(button) {
