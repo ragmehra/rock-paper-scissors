@@ -44,6 +44,8 @@ function playGame(e) {
     const computerWin = `The computer wins! ${computerSelection} beats ${playerSelection} `;
     const playerWin = `You win! ${playerSelection} beats ${computerSelection} `;
 
+    clearWinner();
+    
     //Check for all ties.
     if ((playerSelection === "rock" && computerSelection === "rock") || 
             (playerSelection === "paper" && computerSelection === "paper") || 
@@ -70,6 +72,7 @@ function playGame(e) {
 
 }
 
+//Displays player selections and the result of the game. 
 function updateResult(result, computerSelection, playerSelection) {
     const resultDiv = document.querySelector("#result");
     const computerSelectionDiv = document.querySelector("#computerSelection");
@@ -116,17 +119,34 @@ function checkForWinner() {
     const playerScoreDiv = document.querySelector("#playerScore");
 
     if (computerScoreDiv.textContent === "5") {
-        alert("Computer Wins!");
+        alertWinner("computer");
         resetScore();
     } 
     else if (playerScoreDiv.textContent === "5") {
-        alert("You Win!");
+        alertWinner("player");
         resetScore();
     }
-
-
-
 }
+
+function alertWinner(winner) {
+    const finalResult = document.querySelector(".finalResult");
+    
+    if (winner === "computer")
+    {
+        finalResult.textContent = "The Computer Reached 5 Points First!";
+    }
+    else if (winner === "player")
+    {
+        finalResult.textContent = "You Reached 5 Points First!";
+    }
+}
+
+function clearWinner() {
+    const finalResult = document.querySelector(".finalResult");
+    finalResult.textContent = "";
+}
+
+
 
 function clickPlay(button) {
     button.addEventListener("click", playGame);

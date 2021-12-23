@@ -9,7 +9,9 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <div class="body">
+    <div class="body fade">
+        <h1>Rock, Paper, Scissors!</h1>
+        <p>Choose your weapon!</p>
         <div class="button-container">
             <button id="rock">Rock</button>
             <button id="paper">Paper</button>
@@ -17,12 +19,13 @@
         </div>
 
         <div id="display">
-            <div id="round"></div>
-            <div id="playerScoreContainer">Player Score: <span id="playerScore">0</span></div>
-            <div id="computerScoreContainer">Computer Score: <span id="computerScore">0</span></div>
-            <div id="playerSelection"></div>
-            <div id="computerSelection"></div>
-            <div id="result"></div>
+            <!--<div id="round"></div>-->
+            <div id="playerScoreContainer" class="animate fade refade">Player Score: <span id="playerScore">0</span></div>
+            <div id="computerScoreContainer" class="animate fade refade">Computer Score: <span id="computerScore">0</span></div>
+            <div id="playerSelection" class="animate fade refade"></div>
+            <div id="computerSelection" class="animate fade refade"></div>
+            <div id="result" class="animate fade refade"></div>
+            <div class="finalResult" class="animate fade refade"></div>
             
         </div>
     </div>
